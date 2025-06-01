@@ -1,5 +1,5 @@
 
-##******Contract Redliner Set Up Guide******##
+##****Contract_Redliner Set Up Guide****
 
 
 **1. Create the main project folder and all project files shown below:**
