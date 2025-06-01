@@ -1,3 +1,7 @@
+
+
+****Contract_Redliner Set Up Guide****
+
 **1. Create the main project folder and all project files shown below:**
 
          contract_rediner
@@ -7,7 +11,7 @@
          ├── playbook.py
          └── sample_contract.docx (optional test file)
 
- ***Paste each of the codes below into Notepad or Notepad++ to create the above listed project files***)
+***Paste each of the codes below into Notepad or Notepad++ to create the above listed project files***
     
 **app.py**           
      
