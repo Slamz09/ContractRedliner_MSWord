@@ -18,40 +18,40 @@ contract_rediner
 *app.py
 
 #app.py
-from flask import Flask, request, render_template_string, send_file
-import os
-import time
-from review_contract import review_and_edit_contract
+               
+      from flask import Flask, request, render_template_string, send_file
+      import os
+      import time
+      from review_contract import review_and_edit_contract
 
-app = Flask(__name__)
-UPLOAD_FOLDER = r"C:\Users\slamb\PythonProjects\contract_redliner"  # Your project folder
-app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+      app = Flask(__name__)
+      UPLOAD_FOLDER = r"C:\Users\slamb\PythonProjects\contract_redliner"  # Your project folder
+      app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
-# HTML template as a string
-HTML_TEMPLATE = """
-<!DOCTYPE html>
-<html>
-<head>
+      # HTML template as a string
+      HTML_TEMPLATE = """
+      <!DOCTYPE html>
+      <html>
+      <head>
     <title>Upload Contract for Review</title>
-</head>
-<body>
+      </head>
+      <body>
     <h1>Upload Contract for Review</h1>
     <form method="post" enctype="multipart/form-data">
         <input type="file" name="contract" accept=".docx">
         <input type="submit" value="Review">
-    </form>
-    {% if message %}
-        <p>{{ message }}</p>
-    {% endif %}
-    {% if redline_file %}
-        <p>Download your redlined contract: <a href="/download/{{ redline_file }}">{{ redline_file }}</a></p>
-    {% endif %}
-</body>
-</html>
-"""
-
-@app.route("/", methods=["GET", "POST"])
-def upload_contract():
+          </form>
+       {% if message %}
+           <p>{{ message }}</p>
+       {% endif %}
+       {% if redline_file %}
+           <p>Download your redlined contract: <a href="/download/{{ redline_file }}">{{ redline_file }}</a></p>
+       {% endif %}
+         </body>
+         </html>
+         """
+      @app.route("/", methods=["GET", "POST"])
+      def upload_contract():
     message = None
     redline_file = None
     
@@ -84,48 +84,48 @@ def upload_contract():
             else:
                 message = "Error processing the contract."
     
-    return render_template_string(HTML_TEMPLATE, message=message, redline_file=redline_file)
-
-@app.route("/download/<filename>")
-def download_file(filename):
+    return render_template_string(HTML_TEMPLATE, message=message, redline_file=redline_file) 
+    @app.route("/download/<filename>")
+    def download_file(filename):
     # Serve the redlined file for download
     file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
     return send_file(file_path, as_attachment=True)
-
-if __name__ == "__main__":
+    if __name__ == "__main__":
     app.run(debug=True)  
     
 *requirements.txt
   
 #requirements.txt
-flask
-python-docx
-pywin32
-spacy
+
+      flask
+      python-docx
+      pywin32
+      spacy
 
 
 *review_contract.py
 
 #review_contract.py
-from docx import Document
-import spacy
-import win32com.client as win32
-import pythoncom
-import os
-import re
-from playbook import playbook
 
-# Load spaCy model
-nlp = spacy.load("en_core_web_sm")
+      from docx import Document
+      import spacy
+      import win32com.client as win32
+      import pythoncom
+      import os
+      import re
+      from playbook import playbook
 
-def determine_contract_type(doc):
+      # Load spaCy model
+      nlp = spacy.load("en_core_web_sm")
+
+      def determine_contract_type(doc):
     full_text = " ".join(para.text.strip().lower() for para in doc.paragraphs if para.text.strip())
     customer_score = sum(1 for kw in playbook["payment_customer"]["context_keywords"] if kw in full_text)
     vendor_score = sum(1 for kw in playbook["payment_vendor"]["context_keywords"] if kw in full_text)
     print(f"Customer score: {customer_score}, Vendor score: {vendor_score}")
     return "customer" if customer_score > vendor_score else "vendor" if vendor_score > customer_score else None
 
-def review_and_edit_contract(file_path):
+      def review_and_edit_contract(file_path):
     file_path = os.path.abspath(file_path)
     print(f"Processing file: {file_path}")
     doc = Document(file_path)
@@ -218,7 +218,7 @@ def review_and_edit_contract(file_path):
     finally:
         pythoncom.CoUninitialize()
 
-if __name__ == "__main__":
+      if __name__ == "__main__":
     file_path = r"C:\Users\slamb\PythonProjects\contract_review_ai\sample_contract.docx"
     reviewed_file = review_and_edit_contract(file_path)
     if reviewed_file:
@@ -229,7 +229,8 @@ if __name__ == "__main__":
 *playbook.py
 
 #playbook.py
-playbook = {
+
+      playbook = {
     "payment_customer": {
         "keywords": ["payment", "billing", "invoice", "compensation", "terms of payment"],
         "context_keywords": ["customer shall pay", "client shall pay", "net 30"],
