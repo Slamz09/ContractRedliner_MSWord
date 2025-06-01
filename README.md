@@ -1,4 +1,4 @@
-1. Create the main project folder and all project files shown below using Notepad++, Notepad, or other text editor:
+**1. Create the main project folder and all project files shown below using Notepad++, Notepad, or other text editor:**
 
          contract_rediner
          ├── app.py
@@ -7,23 +7,23 @@
          ├── playbook.py
          └── sample_contract.docx (optional test file)
 
-2. Open power shell, type 'cd' and then paste the file path of the contract_redliner project folder. 
+**2. Open power shell, type 'cd' and then paste the file path of the contract_redliner project folder.**
    
             cd C:\Users\slamb\PythonProjects\contract_redliner
    
-4. Run the app.py file:
+**4. Run the app.py file:**
    
             python app.py
    
-6. Open browser and go to http://127.0.0.1:5000/.
+**6. Open browser and go to http://127.0.0.1:5000/.**
    
-8. Upload contract and click ‘review’
+**8. Upload contract and click ‘review’**
    
-10. Open the newly created redlined contract doc in contract_redliner project folder.
+**10. Open the newly created redlined contract doc in contract_redliner project folder.**
 
 
 
-**app.py** (paste code into Notepad or Notepad++ and save to project folder as app.py)
+**app.py** (***Paste code into Notepad or Notepad++ and save to project folder as app.py***)
                
       from flask import Flask, request, render_template_string, send_file
       import os
@@ -99,9 +99,8 @@
     if __name__ == "__main__":
     app.run(debug=True)  
     
-*requirements.txt
   
-#requirements.txt
+**requirements.txt**
 
       flask
       python-docx
@@ -109,9 +108,7 @@
       spacy
 
 
-*review_contract.py
-
-#review_contract.py
+**review_contract.py**
 
       from docx import Document
       import spacy
@@ -232,9 +229,8 @@
     else:
         print("Failed to save reviewed contract.")
 
-*playbook.py
 
-#playbook.py
+**playbook.py**
 
       playbook = {
     "payment_customer": {
