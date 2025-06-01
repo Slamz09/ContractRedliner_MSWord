@@ -8,7 +8,8 @@
          └── sample_contract.docx (optional test file)
 
  ***Paste each of the codes below into Notepad or Notepad++ to create the above listed project files***)
-    **app.py**           
+    
+**app.py**           
      
       from flask import Flask, request, render_template_string, send_file
       import os
