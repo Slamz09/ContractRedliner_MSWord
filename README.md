@@ -1,11 +1,11 @@
 1. Create main project folder and all project files using Notepad++, Notepad, or other text editor. 
 
-contract_rediner
-├── app.py
-├── requirements.txt
-├── review_contract.py
-├── playbook.py
-└── sample_contract.docx (optional test file)
+         contract_rediner
+         ├── app.py
+         ├── requirements.txt
+         ├── review_contract.py
+         ├── playbook.py
+         └── sample_contract.docx (optional test file)
 
 2. Open power shell, type 'cd' and then paste the file path of the main project folder 'contract_redliner" (
    For instance: cd C:\Users\slamb\PythonProjects\contract_redliner
