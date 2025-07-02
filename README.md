@@ -256,4 +256,17 @@
 
 
 
-        
+        # Navigate to your project directory
+cd C:\Users\slamb\PythonProjects\contract_redliner
+
+# Create a new virtual environment
+python -m venv contract_env
+
+# Activate it
+contract_env\Scripts\activate
+
+# Install requirements
+pip install flask python-docx pywin32 spacy
+
+# Download the spaCy model
+python -m spacy download en_core_web_sm
